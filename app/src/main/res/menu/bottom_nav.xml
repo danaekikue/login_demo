@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_book"
+        android:icon="@drawable/ic_book_sel"
+        android:title="@string/book"/>
+    <item
+        android:id="@+id/nav_misc"
+        android:icon="@drawable/ic_misc"
+        android:title="@string/misc"/>
+    <item
+        android:id="@+id/nav_play"
+        android:title="@string/play"/>
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_link"
+        android:title="@string/link"/>
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings"/>
+</menu>

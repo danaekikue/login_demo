@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">login_demo</string>
+
+    <!-- Login page -->
+    <string name="login_title">Login</string>
+    <string name="id_hint">UserID</string>
+    <string name="password_hint">Password</string>
+    <string name="show_password">Show</string>
+    <string name="hide_password">Hide</string>
+
+    <!-- Login error messages -->
+    <string name="error_message_login">Wrong Credentials</string>
+    <string name="error_message_login_description">The inputs you have written are not correct</string>
+    <string name="back">Back</string>
+
+    <!-- Info Messages -->
+    <string name="user_format_info">only letter or numbers(2 upper case, 4 numbers)</string>
+    <string name="pass_format_info">at least 8 characters (2 upper case, 3 lower case, 1 special character,2 numbers)</string>
+
+    <!-- Login page -->
+    <string name="magazines_title">Magazines</string>
+
+    <!-- Bottom Nav -->
+    <string name="book">Magazines</string>
+    <string name="misc">Misc</string>
+    <string name="play">Play</string>
+    <string name="link">Profile</string>
+    <string name="settings">Settings</string>
+</resources>

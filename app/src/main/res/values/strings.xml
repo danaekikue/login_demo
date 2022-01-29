@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">login_demo</string>
+
+    <!-- Login page -->
+    <string name="login_title">Σύνδεση</string>
+    <string name="id_hint">UserID</string>
+    <string name="password_hint">Κωδικός</string>
+    <string name="show_password">Προβολή</string>
+    <string name="hide_password">Απόκρυψη</string>
+
+    <!-- Login error messages -->
+    <string name="error_message_login">Λανθασμένα στοιχεία</string>
+    <string name="error_message_login_description">Έχετε υποβάλει λάθος στοιχεία</string>
+    <string name="back">Επιστροφή</string>
+
+    <!-- Info Messages -->
+    <string name="user_format_info">μόνο γράμματα και νούμερα (2 κεφαλαία γράμματα, 4 νούμερα)</string>
+    <string name="pass_format_info">τουλάχιστον 8 χαρακτήρες (2 κεφαλαία, 3 πεζά, 1 ειδικός χαρακτήρας,2 νούμερα)</string>
+
+    <!-- Magazines page -->
+    <string name="magazines_title">Περιοδικά</string>
+
+    <!-- Bottom nav -->
+    <string name="book">Περιοδικά</string>
+    <string name="misc">Misc</string>
+    <string name="play">Αναπαραγωγή</string>
+    <string name="link">Προφίλ</string>
+    <string name="settings">Ρυθμίσεις</string>
+
+</resources>

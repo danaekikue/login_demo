@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Black variations -->
+    <color name="black">#000d05</color>
+    <color name="onyx">#101417</color>
+    <color name="onyx_variation">#0e1613</color>
+    <color name="grey_gradient">#15181c</color>
+    <color name="light_grey">#1e1e1e</color>
+    <!-- Green variations -->
+    <color name="forest_green">#28961b</color>
+    <color name="forest_green_variation">#2c9f1d</color>
+    <color name="forest_green_light">#50a235</color>
+    <color name="dollar_bill">#85c370</color>
+    <!-- White variations -->
+    <color name="white">#ffffff</color>
+    <color name="munsell">#f2f2f2</color>
+    <color name="platinum">#ebe6e6</color>
+    <color name="transparent">#00EBE6E6</color>
+    <!-- Other colors -->
+    <color name="lust">#ec1c24</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#50a235</color>
+</resources>

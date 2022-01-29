@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="input_fields" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/light_grey</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColor">@color/munsell</item>
+        <item name="boxStrokeColor">@color/forest_green_light</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
+
+    <style name="round_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5dp</item>
+        <item name="color">@color/black</item>
+    </style>
+
+
+</resources>

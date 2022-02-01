@@ -22,10 +22,10 @@ public class MagazineModel {
     public String toString() {
         return "{"+
                 "id=" + id +
-                ", title= '" + title + '\'' +
-                ", img_url='" + img_url + '\'' +
-                ", date_released='" + date_released + '\'' +
-                ", pdf_url='" + pdf_url + '\'' +
+                ", title= '" + title + "'"  +
+                ", img_url='" + img_url + "'"  +
+                ", date_released='" + date_released + "'"  +
+                ", pdf_url='" + pdf_url + "'" +
                 "}";
     }
 

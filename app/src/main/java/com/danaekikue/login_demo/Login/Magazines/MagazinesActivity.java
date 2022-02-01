@@ -82,6 +82,7 @@ public class MagazinesActivity extends AppCompatActivity {
                                  e.printStackTrace();
                              }
                          }
+                         Log.d("Magazines json", magazines.toString());
                          setUpRecycler(magazines);
                      }
                  }, new Response.ErrorListener() {
@@ -105,7 +106,7 @@ public class MagazinesActivity extends AppCompatActivity {
 
     private void setUpRecycler(List<MagazineModel> magazines) {
         MagazinesAdapter adapter = new MagazinesAdapter(magazines);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
     }
 

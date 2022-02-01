@@ -26,6 +26,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,8 +38,11 @@ public class MagazinesActivity extends AppCompatActivity {
 
     private TextView bar_tittle;
 
-    private List<MagazineModel> magazines = new ArrayList<>();
-    private RecyclerView recyclerView;
+    private List<MagazineModel> magazines2020 = new ArrayList<>();
+    private List<MagazineModel> magazines2019 = new ArrayList<>();
+    private List<MagazineModel> magazinesOlder = new ArrayList<>();
+
+    private RecyclerView recyclerView2020, recyclerView2019, recyclerViewOlder;
 
     private RequestQueue queue;
 
@@ -46,11 +51,12 @@ public class MagazinesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_magazines);
 
-        recyclerView = findViewById(R.id.recycleViewMagazines);
+        recyclerView2020 = findViewById(R.id.recycleViewMagazines2020);
+        recyclerView2019 = findViewById(R.id.recycleViewMagazines2019);
+        recyclerViewOlder = findViewById(R.id.recycleViewMagazinesOlder);
 
         Intent intent = getIntent();
         String access_token = intent.getStringExtra("access_token");
-        Log.d("JSON Token in Magazines", access_token);
 
         getRequest(access_token);
 
@@ -71,19 +77,28 @@ public class MagazinesActivity extends AppCompatActivity {
                                  MagazineModel magazine = new MagazineModel();
 
                                  magazine.setId(magazineObj.getInt("id"));
-                                 magazine.setTitle(magazineObj.getString("title").toString());
-                                 magazine.setImg_url(magazineObj.getString("img_url").toString());
-                                 magazine.setDate_released(magazineObj.getString("date_released").toString());
-                                 magazine.setPdf_url(magazineObj.getString("pdf_url").toString());
+                                 magazine.setTitle(magazineObj.getString("title"));
+                                 magazine.setImg_url(magazineObj.getString("img_url"));
+                                 magazine.setDate_released(magazineObj.getString("date_released"));
+                                 magazine.setPdf_url(magazineObj.getString("pdf_url"));
 
-                                 magazines.add(magazine);
+                                 String year = magazineObj.getString("date_released").substring(0,4);
+
+
+                                if (year.equals("2020")){
+                                    magazines2020.add(magazine);
+                                }else if (year.equals("2019")){
+                                    magazines2019.add(magazine);
+                                }else{
+                                    magazinesOlder.add(magazine);
+                                }
 
                              }catch (JSONException e){
                                  e.printStackTrace();
                              }
                          }
-                         Log.d("Magazines json", magazines.toString());
-                         setUpRecycler(magazines);
+
+                         setUpRecycler(magazines2020, magazines2019, magazinesOlder);
                      }
                  }, new Response.ErrorListener() {
              @Override
@@ -104,10 +119,33 @@ public class MagazinesActivity extends AppCompatActivity {
          queue.add(arrayRequest);
     }
 
-    private void setUpRecycler(List<MagazineModel> magazines) {
-        MagazinesAdapter adapter = new MagazinesAdapter(magazines);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerView.setAdapter(adapter);
+    private void setUpRecycler(List<MagazineModel> magazines2020, List<MagazineModel> magazines2019, List<MagazineModel> magazinesOlder) {
+
+        if (recyclerView2020!=null){
+            MagazinesAdapter adapter2020 = new MagazinesAdapter(magazines2020);
+            recyclerView2020.setLayoutManager(new GridLayoutManager(this, 2));
+            recyclerView2020.setAdapter(adapter2020);
+        }
+
+        if (recyclerView2019!=null){
+            MagazinesAdapter adapter2019 = new MagazinesAdapter(magazines2019);
+            recyclerView2019.setLayoutManager(new GridLayoutManager(this, 2));
+            recyclerView2019.setAdapter(adapter2019);
+        }
+
+        if (recyclerViewOlder!=null){
+            MagazinesAdapter adapterOlder = new MagazinesAdapter(magazinesOlder);
+            recyclerViewOlder.setLayoutManager(new GridLayoutManager(this, 2));
+            recyclerViewOlder.setAdapter(adapterOlder);
+        }
+
+
+
+
+
+
+
+
     }
 
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="268dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rounded_corner">
+
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_input"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/back_to_login_btn_empty"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="19dp"/>
+
+
+    <Button
+        android:id="@+id/back_to_login_btn_empty"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="@string/back"
+        android:textColor="@color/dollar_bill"
+        android:background="@color/onyx_variation"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/error_message"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="21dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,12 +14,17 @@
     <string name="error_message_login_description">The inputs you have written are not correct</string>
     <string name="back">Back</string>
 
+    <string name="empty_input">Please input userID and password</string>
+
     <!-- Info Messages -->
     <string name="user_format_info">only letter or numbers(2 upper case, 4 numbers)</string>
     <string name="pass_format_info">at least 8 characters (2 upper case, 3 lower case, 1 special character,2 numbers)</string>
 
-    <!-- Login page -->
+    <!-- Magazines page -->
     <string name="magazines_title">Magazines</string>
+    <string name="year2020">2020</string>
+    <string name="year2019">2019</string>
+    <string name="beofre2019">2018</string>
 
     <!-- Bottom Nav -->
     <string name="book">Magazines</string>

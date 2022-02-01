@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText userID, password;
     private TextView success_text,view_pass, info_m, bar_tittle;
     private ImageView userInfo, passInfo;
-    private Button login_btn, back_to_login_btn;
+    private Button login_btn, back_to_login_btn,back_to_login_btn_empty;
 
     private int clickNum;
     private String info_type;
@@ -58,8 +58,11 @@ public class LoginActivity extends AppCompatActivity {
 
         userID = findViewById(R.id.login_id_value);
         password = findViewById(R.id.login_password_value);
+
         login_btn = findViewById(R.id.login_button);
         back_to_login_btn = findViewById(R.id.back_to_login_btn);
+        back_to_login_btn_empty = findViewById(R.id.back_to_login_btn_empty);
+
         userInfo = findViewById(R.id.info_icon_id);
         passInfo = findViewById(R.id.info_icon_pass);
         view_pass = findViewById(R.id.view_password);
@@ -74,9 +77,11 @@ public class LoginActivity extends AppCompatActivity {
                 String inputPassword = password.getText().toString();
 
                 if (inputUserID.isEmpty() || inputPassword.isEmpty()){
-                    //Toast.makeText(this, "UserID not defined", Toast.LENGTH_SHORT).show();
-                    showErrorMessage();
-                }else {
+                    showErrorMessageEmptyInput();
+                }else if(!userIDValidity(inputUserID)){
+                    //!userIDValidity(inputUserID)
+                    showErrorMessageWrongCredentials();
+                }else{
                     login(inputUserID, inputPassword);
                 }
             }
@@ -113,12 +118,6 @@ public class LoginActivity extends AppCompatActivity {
     //Method for API connection to pass the user's credentials and check their validity
     private void login(String inputUserID, String inputPassword){
 
-        /*if (passwordValidity(inputPassword)){
-            Toast.makeText(this, "Password Match", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this, "Password no Match", Toast.LENGTH_SHORT).show();
-        }*/
-
         queue = Volley.newRequestQueue(this);
         gson = new Gson();
 
@@ -127,10 +126,8 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("APPLOG", response);
                         User user = gson.fromJson(response,User.class);
                         String access_token = user.getAccessToken();
-                        Log.d("access token login", access_token);
                         Intent intent = new Intent( LoginActivity.this ,MagazinesActivity.class);
                         intent.putExtra("access_token", access_token);
                         startActivity(intent);
@@ -139,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("APPLOG", error.toString());
+                showErrorMessageWrongCredentials();
             }
         }){
             @Override
@@ -153,20 +151,72 @@ public class LoginActivity extends AppCompatActivity {
         queue.add(stringRequest);
     }
 
-    private static boolean passwordValidity(String password){
+    private static boolean userIDValidity(String userID){
         Pattern pattern;
         Matcher matcher;
-        String PASSWORD_PATTERN = "^(?=.*[0-9]{2})(?=.*[A-Z]{2})(?=.*[a-z]{2})(?=.*[@#$%^&+=!]).{8,}$";
-        pattern = Pattern.compile(PASSWORD_PATTERN);
-        matcher = pattern.matcher(password);
+        String USERID_PATTERN = "^[A-Z]{2}[0-9]{4}";
+        pattern = Pattern.compile(USERID_PATTERN);
+        matcher = pattern.matcher(userID);
         return matcher.matches();
     }
 
-    private void showErrorMessage(){
+    private boolean passwordValidity(String password){
+
+        Boolean isValid=false, legnth= false, upper= false, lower= false, special_char= false, numbers = false;
+
+        if (password.length() <= 8){
+            legnth = true;
+            Log.d("legnth", legnth.toString());
+        }else
+
+        if (password.matches("[A-Z]{2,}")){
+            upper  = true;
+            Log.d("upper", upper.toString());
+        }
+
+        if (password.matches("[a-z]{3,}")){
+            lower  = true;
+            Log.d("lower", lower.toString());
+        }
+
+        if (password.matches("[0-9]{2,}")){
+            special_char  = true;
+            Log.d("special_char", special_char.toString());
+        }
+
+        if (password.matches("[@#$%^&+=]+")){
+            numbers  = true;
+            Log.d("numbers", numbers.toString());
+        }
+
+        if (legnth && upper && lower && special_char && numbers ){
+            isValid =true;
+            Log.d("isValid", isValid.toString());
+        }
+        Log.d("isValid", isValid.toString());
+        return isValid;
+    }
+
+    private void showErrorMessageWrongCredentials(){
         dialog.setContentView(R.layout.activity_error_message);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         Button back_button = dialog.findViewById(R.id.back_to_login_btn);
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    private void showErrorMessageEmptyInput(){
+        dialog.setContentView(R.layout.activity_empty_input_error_message);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        Button back_button = dialog.findViewById(R.id.back_to_login_btn_empty);
 
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override

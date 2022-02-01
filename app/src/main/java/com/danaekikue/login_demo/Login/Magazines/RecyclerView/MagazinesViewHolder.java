@@ -1,5 +1,6 @@
 package com.danaekikue.login_demo.Login.Magazines.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +24,8 @@ public class MagazinesViewHolder extends RecyclerView.ViewHolder{
         date.setText(data.getTitle());
 
         ImageView imageView = itemView.findViewById(R.id.magazine_cover);
-        //Http not showing image, replace with http as you get the image url
+
+        //Http not showing image, replace with https as you get the image url
         Picasso.get().load(data.getImg_url().replace("http", "https")).into(imageView);
     }
 

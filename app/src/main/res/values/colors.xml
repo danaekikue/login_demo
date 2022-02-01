@@ -15,6 +15,7 @@
     <color name="white">#ffffff</color>
     <color name="munsell">#f2f2f2</color>
     <color name="platinum">#ebe6e6</color>
+    <color name="lighter_white">#CDF2F2F2</color>
     <color name="transparent">#00EBE6E6</color>
     <!-- Other colors -->
     <color name="lust">#ec1c24</color>

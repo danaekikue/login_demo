@@ -14,12 +14,18 @@
     <string name="error_message_login_description">Έχετε υποβάλει λάθος στοιχεία</string>
     <string name="back">Επιστροφή</string>
 
+    <string name="empty_input">Παρακαλώ εισάγετε userID και Password</string>
+
     <!-- Info Messages -->
     <string name="user_format_info">μόνο γράμματα και νούμερα (2 κεφαλαία γράμματα, 4 νούμερα)</string>
     <string name="pass_format_info">τουλάχιστον 8 χαρακτήρες (2 κεφαλαία, 3 πεζά, 1 ειδικός χαρακτήρας,2 νούμερα)</string>
 
     <!-- Magazines page -->
     <string name="magazines_title">Περιοδικά</string>
+    <string name="year2020">2020</string>
+    <string name="year2019">2019</string>
+    <string name="beofre2019">2018</string>
+
 
     <!-- Bottom nav -->
     <string name="book">Περιοδικά</string>

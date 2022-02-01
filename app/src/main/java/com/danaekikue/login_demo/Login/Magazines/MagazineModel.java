@@ -1,5 +1,7 @@
 package com.danaekikue.login_demo.Login.Magazines;
 
+import java.util.Date;
+
 public class MagazineModel {
 
     private int id;
